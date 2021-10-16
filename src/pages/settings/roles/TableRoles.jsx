@@ -1,4 +1,4 @@
-export function TableRoles({setOption}) {
+export function TableRoles() {
     return (
         // <!-- This example requires Tailwind CSS v2.0+ -->
         <div className="flex flex-col">
@@ -38,7 +38,7 @@ export function TableRoles({setOption}) {
                                     </td>
                                  
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" className="text-indigo-600 hover:text-indigo-900" onClick={()=>setOption('edit')}>Edit</a>
+                                        <a href="/settings/roles/update" className="text-indigo-600 hover:text-indigo-900" onClick={()=>setOption('edit')}>Edit</a>
                                     </td>
                                 </tr>
 

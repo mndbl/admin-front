@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Chip from '@mui/material/Chip';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -18,20 +19,41 @@ export default function Profile() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image="https://images.unsplash.com/photo-1633793545207-bd5a09c3e4a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+                        image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
                         alt="green iguana"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            Nombre
+                        </Typography>
+                        <div className="grid grid-cols-2">
+
+                        <Typography gutterBottom variant="h6" component="div">
+                            Role
+                        </Typography>
+                        <Chip label="Chip Outlined" variant="outlined" color="primary"/>
+                        </div>
+                        <Typography variant="body2" color="text.secondary">
+                            email@email.com
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            phone
                         </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            adress
+                        </Typography>
+                        <div className="grid grid-cols-2">
+                        <Typography variant="body2" color="text.secondary">
+                            cargo
+                        </Typography>
+
+                        <Typography variant="body2" color="text.secondary">
+                            departamento
+                        </Typography>
+                        </div>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
+                {/* <CardActions>
                     <ButtonGroup
                         fullWidth
                         size="large"
@@ -50,7 +72,7 @@ export default function Profile() {
                         </label>
                   
 
-                </CardActions>
+                </CardActions> */}
             </Card>
         </div>
     );

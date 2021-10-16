@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { SmCard } from "../../../components/cards/SmCard"
-export function FormRoles({setOption, text}) {
+export function FormRoles({text}) {
     return (
         <div className="mt-4">
             <SmCard text={text}>
@@ -29,8 +29,8 @@ export function FormRoles({setOption, text}) {
                             aria-label="default contained button group"
                             variant="contained"
                         >
-                            <Button key="one" >Enviar</Button>,
-                            <Button key="two" color="error"  onClick={()=>setOption('index')}>Cancelar</Button>,
+                            <Button key="one" href="#" >Enviar</Button>,
+                            <Button key="two" color="error"  href="/settings/roles/index">Cancelar</Button>,
 
                         </ButtonGroup>
                     </div>

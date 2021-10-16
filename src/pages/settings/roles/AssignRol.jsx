@@ -47,8 +47,8 @@ export default function AssignRol({setOption}) {
                         aria-label="default contained button group"
                         variant="contained"
                     >
-                        <Button key="one" >Enviar</Button>,
-                        <Button key="two" color="error" onClick={()=>setOption('index')} >Cancelar</Button>,
+                        <Button key="one" href="#" >Enviar</Button>,
+                        <Button key="two" color="error" href="/settings/roles/index" >Cancelar</Button>,
 
                     </ButtonGroup>
                 </div>

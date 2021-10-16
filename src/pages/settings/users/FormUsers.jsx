@@ -8,8 +8,7 @@ const Input = styled('input')({
     display: 'none',
 });
 
-export function FormProfiles
-    ({ setOption, text }) {
+export function FormUsers({ setOption, text }) {
     return (
         <div className="mt-4">
             <SmCard text={text}>
