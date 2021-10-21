@@ -1,23 +1,27 @@
 import { Button } from "@mui/material"
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { styleInput } from "../../../assets/Styles";
 import { SmCard } from "../../../components/cards/SmCard"
-export function FormRoles({text}) {
+import { styleInput } from "../../../assets/Styles";
+import { styled } from '@mui/material/styles';
+
+const Input = styled('input')({
+    display: 'none',
+});
+
+export function FormDepartamento({ setOption, text }) {
     return (
         <div className="mt-4">
             <SmCard text={text}>
                 <form className="">
                     <div className="mt-4">
 
-
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="name">Name</label>
-                            <input id="name" type="text" className={styleInput} />
+                            <label className="text-gray-700 dark:text-gray-200" htmlFor="nombre">Nombre</label>
+                            <input id="nombre" type="text" className={styleInput} />
                         </div>
-
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="description">Description</label>
-                            <input id="description" type="text" className={styleInput} />
+                            <label className="text-gray-700 dark:text-gray-200" htmlFor="descripcion">Descripción</label>
+                            <input id="descripcion" type="text" className={styleInput} />
                         </div>
 
 
@@ -30,8 +34,8 @@ export function FormRoles({text}) {
                             aria-label="default contained button group"
                             variant="contained"
                         >
-                            <Button key="guardar-rol" href="#" >Enviar</Button>,
-                            <Button key="cancelar-form-rol" color="error"  href="/settings/roles/index">Cancelar</Button>,
+                            <Button key="guardar-departamento" >Enviar</Button>,
+                            <Button key="cancelar-form-departamento" color="error" onClick={() => setOption('index')}>Cancelar</Button>,
 
                         </ButtonGroup>
                     </div>

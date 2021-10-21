@@ -2,12 +2,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useState } from 'react';
-import { FormProfiles } from './FormProfiles';
-import Profile from './Profile';
-import { TableProfiles } from './TableProfiles';
+import { FormCuentas } from './FormCuentas';
+import { TableCuentas } from './TableCuentas';
 
 
-export function IndexProfiles() {
+export function IndexCuentas() {
     
     return (
         <div className="w-full rounded-lg bg-blue-200 h-full lg:flex">
@@ -19,17 +18,17 @@ export function IndexProfiles() {
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
-                    <Button key="show-profile" href="/settings/profiles/show">Perfil</Button>,
-                    <Button key="index-profile" href="/settings/profiles/index" >Tabla de Perfiles</Button>,
+                    <Button key="store-cuenta" href="/settings/cuentas/store">Agregar Cuenta</Button>,
+                    <Button key="index-cuenta" href="/settings/cuentas/index" >Tabla de Cuentas</Button>,
                 </ButtonGroup>
             </div>
             <div className="w-full py-4">
                 <Switch>
-                    <Route path="/settings/profiles/show" component={Profile} />
-                    <Route path="/settings/profiles/index" component={TableProfiles} />
-                    <Route path="/settings/profiles/edit"><FormProfiles text="Actualizar Perfil" /></Route>
+                    <Route path="/settings/cuentas/index" component={TableCuentas} />
+                    <Route path="/settings/cuentas/edit"><FormCuentas text="Actualizar Cuenta" /></Route>
+                    <Route path="/settings/cuentas/store"><FormCuentas text="Registrar Cuenta" /></Route>
 
-                    <Redirect from="/settings/profiles" to="/settings/profiles/show" />
+                    <Redirect from="/settings/cuentas" to="/settings/cuentas/index" />
                 </Switch>
 
             </div>

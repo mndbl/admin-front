@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { styleInput } from "../../../assets/Styles";
 import { SmCard } from "../../../components/cards/SmCard"
-export function FormRoles({text}) {
+export function FormMarcas({text}) {
     return (
         <div className="mt-4">
             <SmCard text={text}>

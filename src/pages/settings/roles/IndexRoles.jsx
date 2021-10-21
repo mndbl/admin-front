@@ -18,9 +18,9 @@ export function IndexRoles() {
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
-                    <Button key="one" href="/settings/roles/store">Nuevo Rol</Button>,
-                    <Button key="three" href="#">Three</Button>,
-                    <Button key="two" href="/settings/roles/assign">Asignar Rol</Button>,
+                    <Button key="nuevo_rol" href="/settings/roles/store">Nuevo Rol</Button>,
+                    
+                    <Button key="assign_rol" href="/settings/roles/assign">Asignar Rol</Button>,
                 </ButtonGroup>
             </div>
             <div className="w-full py-4">

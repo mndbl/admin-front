@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles';
 const Input = styled('input')({
     display: 'none',
 });
-export default function Profile() {
+export default function Empresa() {
     return (
         <div className="w-full max-w-sm px-4 py-3 mx-auto bg-transparent dark:bg-gray-800">
 
@@ -19,20 +19,21 @@ export default function Profile() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"
+                        image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1415&q=80"
                         alt="green iguana"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Nombre
+                            Nombre Empresa
                         </Typography>
-                        <div className="grid grid-cols-2">
+                        <Typography gutterBottom variant="h6" component="div">
+                            Representante
+                        </Typography>
 
-                            <Typography gutterBottom variant="h6" component="div">
-                                Role
-                            </Typography>
-                            <Chip label="Status" variant="outlined" color="primary" />
-                        </div>
+
+                        <Typography variant="body2" color="text.secondary">
+                            Rif
+                        </Typography>
                         <Typography variant="body2" color="text.secondary">
                             email@email.com
                         </Typography>
@@ -42,15 +43,10 @@ export default function Profile() {
                         <Typography variant="body2" color="text.secondary">
                             adress
                         </Typography>
-                        <div className="grid grid-cols-2">
-                            <Typography variant="body2" color="text.secondary">
-                                cargo
-                            </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            adress
+                        </Typography>
 
-                            <Typography variant="body2" color="text.secondary">
-                                departamento
-                            </Typography>
-                        </div>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
@@ -60,12 +56,12 @@ export default function Profile() {
                         aria-label="default contained button group"
                         variant="contained"
                     >
-                        <Button key="actualizar-empresa" href="/settings/profiles/edit">Actualizar</Button>,
-
+                        <Button key="actualizar-empresa" href="/settings/empresas/edit">Actualizar</Button>,
+                     
 
                     </ButtonGroup>
-
-
+                       
+                  
 
                 </CardActions>
             </Card>

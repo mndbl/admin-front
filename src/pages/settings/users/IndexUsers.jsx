@@ -18,8 +18,8 @@ export function IndexUsers() {
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
-                    <Button key="two" href="/settings/users/store">Nuevo Usuario</Button>,
-                    <Button key="three" href="/settings/users/index" >Tabla de Usuarios</Button>,
+                    <Button key="store_user" href="/settings/users/store">Nuevo Usuario</Button>,
+                    <Button key="index_user" href="/settings/users/index" >Tabla de Usuarios</Button>,
                 </ButtonGroup>
             </div>
             <div className="w-full py-4">

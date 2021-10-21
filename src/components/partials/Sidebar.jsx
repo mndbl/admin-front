@@ -1,7 +1,7 @@
 export function Sidebar({ itemsOptions }) {
     return (
 
-        <div className="sm:hidden md:flex flex-col w-64 h-screen px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
+        <div className="sm:absolute md:relative sm:z-20 md:flex flex-col w-64 h-screen px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
             <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">Brand</h2>
 
             <div className="relative mt-6">
@@ -18,7 +18,7 @@ export function Sidebar({ itemsOptions }) {
                 <nav>
                     {itemsOptions.map((item) => {
                         return (
-                            <a className="flex items-center px-4 py-2 mb-4 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-200"
+                            <a className="flex no-underline hover:underline items-center px-4 py-2 mb-4 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-200"
                                 href={item.path} key={item.label}>
                                 {item.icon}
 

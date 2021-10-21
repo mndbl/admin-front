@@ -2,12 +2,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useState } from 'react';
-import { FormProfiles } from './FormProfiles';
-import Profile from './Profile';
-import { TableProfiles } from './TableProfiles';
+import { TableEntes } from './TableEntes';
+import { FormEntes } from './FormEntes';
 
 
-export function IndexProfiles() {
+export function IndexEntes() {
     
     return (
         <div className="w-full rounded-lg bg-blue-200 h-full lg:flex">
@@ -19,17 +18,16 @@ export function IndexProfiles() {
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
-                    <Button key="show-profile" href="/settings/profiles/show">Perfil</Button>,
-                    <Button key="index-profile" href="/settings/profiles/index" >Tabla de Perfiles</Button>,
+                    <Button key="show-profile" href="/settings/entes/store">Agregar Ente</Button>,
+                    <Button key="index-profile" href="/settings/entes/index" >Tabla de Ente</Button>,
                 </ButtonGroup>
             </div>
             <div className="w-full py-4">
                 <Switch>
-                    <Route path="/settings/profiles/show" component={Profile} />
-                    <Route path="/settings/profiles/index" component={TableProfiles} />
-                    <Route path="/settings/profiles/edit"><FormProfiles text="Actualizar Perfil" /></Route>
-
-                    <Redirect from="/settings/profiles" to="/settings/profiles/show" />
+                    <Route path="/settings/entes/index"><TableEntes /></Route>
+                    <Route path="/settings/entes/store"><FormEntes text="Agregar Ente" /></Route>
+                    <Route path="/settings/entes/edit"><FormEntes text="Actualizar Ente" /></Route>
+                    <Redirect from="/settings/entes" to="/settings/entes/index" />
                 </Switch>
 
             </div>
