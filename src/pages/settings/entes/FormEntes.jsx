@@ -23,27 +23,43 @@ export function FormEntes
             <SmCard text={text}>
                 <form className="">
                     <div className="mt-4">
-                        <FormControl component="fieldset">
+                        {/* <FormControl component="fieldset"> */}
                             <FormLabel component="legend">Ente</FormLabel>
                             <RadioGroup row aria-label="ente" name="row-radio-buttons-group">
                                 <FormControlLabel value="cliente" control={<Radio />} label="Cliente" />
                                 <FormControlLabel value="proveedor" control={<Radio />} label="Proveedor" />
                             </RadioGroup>
-                        </FormControl>
+                        {/* </FormControl> */}
 
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="name">Nombre</label>
-                            <input id="name" type="text" className={styleInput} />
+                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="name_ente">Nombre</label>
+                            <input id="name_ente" type="text" className={styleInput} />
                         </div>
 
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="tipo_ente">Tipo</label>
-                            <input id="tipo_ente" type="text" className={styleInput} />
+                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="rif_ente">ID/RIF</label>
+                            <input id="rif_ente" type="text" className={styleInput} />
                         </div>
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="description">Description</label>
-                            <input id="description" type="text" className={styleInput} />
+                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="email">Email</label>
+                            <input id="email" type="email" className={styleInput} />
                         </div>
+                        <div className="grid grid-cols-2 gap-x-2">
+                            <div>
+                                <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="local_ente">Tel Oficina</label>
+                                <input id="local_ente" type="tel" className={styleInput} />
+                            </div>
+                            <div>
+                                <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="movil_ente">Tel Móvil</label>
+                                <input id="movil_ente" type="tel" className={styleInput} />
+                            </div>
+
+                        </div>
+                            <div>
+                                <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="direccion_ente">Dirección</label>
+                                <input id="direccion_ente" type="text" className={styleInput} />
+                            </div>
+
 
 
                     </div>
@@ -66,7 +82,3 @@ export function FormEntes
     )
 }
 
-const entes = [
-    { nombre: 'cliente' },
-    { nombre: 'proveedor' },
-]
