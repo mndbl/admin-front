@@ -7,7 +7,6 @@ import { styleInput } from "../../../assets/Styles";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
@@ -22,14 +21,12 @@ export function FormEntes
         <div className="mt-4">
             <SmCard text={text}>
                 <form className="">
-                    <div className="mt-4">
-                        {/* <FormControl component="fieldset"> */}
-                            <FormLabel component="legend">Ente</FormLabel>
-                            <RadioGroup row aria-label="ente" name="row-radio-buttons-group">
-                                <FormControlLabel value="cliente" control={<Radio />} label="Cliente" />
-                                <FormControlLabel value="proveedor" control={<Radio />} label="Proveedor" />
-                            </RadioGroup>
-                        {/* </FormControl> */}
+                    <div className="mt-4 text-gray-700">
+                        <FormLabel component="legend">Ente</FormLabel>
+                        <RadioGroup row aria-label="ente" name="row-radio-buttons-group">
+                            <FormControlLabel value="cliente" control={<Radio />} label="Cliente" />
+                            <FormControlLabel value="proveedor" control={<Radio />} label="Proveedor" />
+                        </RadioGroup>
 
                         <div>
                             <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="name_ente">Nombre</label>
@@ -55,10 +52,10 @@ export function FormEntes
                             </div>
 
                         </div>
-                            <div>
-                                <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="direccion_ente">Dirección</label>
-                                <input id="direccion_ente" type="text" className={styleInput} />
-                            </div>
+                        <div>
+                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="direccion_ente">Dirección</label>
+                            <input id="direccion_ente" type="text" className={styleInput} />
+                        </div>
 
 
 

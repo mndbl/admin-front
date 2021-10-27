@@ -1,7 +1,7 @@
 const productos = [
   {
     nombre: 'Repuesto/Suministro',
-    descripcion: 'Descripción',
+    categoria: 'Categoría',
     marca: 'Marca',
     codigo: 'Código',
     precioCompra: 'Precio Compra',
@@ -57,7 +57,7 @@ export function TableProductos() {
                       <div className="flex items-center">
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{producto.nombre}</div>
-                          <div className="text-sm text-gray-500">{producto.descripcion}</div>
+                          <div className="text-sm text-gray-500">{producto.categoria}</div>
                         </div>
                       </div>
                     </td>

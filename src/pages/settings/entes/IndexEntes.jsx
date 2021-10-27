@@ -9,17 +9,17 @@ import { FormEntes } from './FormEntes';
 export function IndexEntes() {
     
     return (
-        <div className="w-full rounded-lg bg-blue-200 h-full lg:flex">
-            <div className="w-64">
+        <div className="w-full rounded-lg bg-blue-200 h-full">
+            <div className="w-full">
                 <ButtonGroup
                     fullWidth
                     size="large"
-                    orientation="vertical"
+                  
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
                     <Button key="show-profile" href="/settings/entes/store">Agregar Ente</Button>,
-                    <Button key="index-profile" href="/settings/entes/index" >Tabla de Ente</Button>,
+                    <Button key="index-profile" href="/settings/entes/index" >Tabla de Entes</Button>,
                 </ButtonGroup>
             </div>
             <div className="w-full py-4">

@@ -9,12 +9,11 @@ import { FormUsers } from './FormUsers';
 
 export function IndexUsers() {
         return (
-        <div className="w-full rounded-lg bg-blue-200 h-full lg:flex">
-            <div className="w-64">
+        <div className="w-full rounded-lg bg-blue-200 h-full">
+            <div className="w-full">
                 <ButtonGroup
                     fullWidth
                     size="large"
-                    orientation="vertical"
                     aria-label="vertical contained button group"
                     variant="contained"
                 >
