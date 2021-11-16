@@ -3,18 +3,23 @@ import Fab from '@mui/material/Fab';
 import { Tooltip } from '@mui/material';
 
 
-const itemsCompras = [
-    {
-        id: 'id',
-        cantidad: 'cant',
-        concepto: 'concepto',
-        alicuota: '16%',
-        precioUnitario: "p/unit",
-        total: 'total',
-    },
-]
+// const itemsCompras = [
+//     {
+//         id: 'id',
+//         cantidad: 'cant',
+//         concepto: 'concepto',
+//         alicuota: '16%',
+//         precioUnitario: "p/unit",
+//         total: 'total',
+//     },
+// ]
 
-export function TableDetallesCompras() {
+export function TableDetallesCompras({itemsCompra}) {
+    const handleItemDelete =itemId=>{
+        alert(itemId)
+        let deleteItem = itemsCompra.indexOf(itemId)
+        itemsCompra.splice(deleteItem, 1)
+    }
     return (
         <div className="flex flex-col">
             <div className="">
@@ -60,7 +65,7 @@ export function TableDetallesCompras() {
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200 px-2">
-                                {itemsCompras.map((item) => (
+                                {itemsCompra.map((item) => (
                                     <tr key={item.id + item.concepto}>
                                         <td className="px-6 whitespace-nowrap">
                                             <div className="flex items-center">
@@ -87,9 +92,9 @@ export function TableDetallesCompras() {
                                             <div className="text-sm text-gray-900">{item.total}</div>
                                         </td>
                                         <td className="px-6 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/admin/registros/registro-diario/edit" className="text-indigo-600 hover:text-indigo-900">
+                                            <button type="button" onClick={()=>handleItemDelete(item.id)} className="text-indigo-600 hover:text-indigo-900">
                                                 Eliminar
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

@@ -1,11 +1,11 @@
-import {HomeNavbar} from '../components/partials/HomeNavbar'
+import {Navbar} from '../components/partials/Navbar'
 import {Footer} from '../components/partials/Footer'
 
 export function Home(){
     return (
         <div className="h-screen w-full flex flex-col">
-            <HomeNavbar/>
-            <div className="flex-grow">conten</div>
+            <Navbar profile={null}/>
+            <div className="flex-grow shadow">conten</div>
             <Footer/>
         </div>
     )

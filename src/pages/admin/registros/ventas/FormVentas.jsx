@@ -34,7 +34,7 @@ export function FormVentas({ text }) {
                             />
                         </div>
                         <div>
-                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="cliente">Proveedor</label>
+                            <label className="text-gray-700 dark:text-gray-200 capitalize" htmlFor="cliente">Cliente</label>
                             <select id="cliente" className={styleInput}>
                                 <option>Seleccione Cliente</option>
                             </select>

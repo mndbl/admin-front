@@ -1,9 +1,15 @@
+import { useState } from "react"
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Collapse } from "@mui/material";
 const links = [
-    {path:"/login", text: "Login"},
-    {path:"/register", text: "Register"},
+    { path: "/login", text: "Login" },
+    { path: "/register", text: "Register" },
 ]
 
 export function HomeNavbar() {
+    const [mobileMenu, setMobileMenu] = useState(false)
+    const showItems = mobileMenu ? 'block' : 'hidden'
     return (
         <nav className="bg-white shadow dark:bg-gray-800">
             <div className="container px-6 py-4 mx-auto">
@@ -14,26 +20,25 @@ export function HomeNavbar() {
                         </div>
 
                         {/* <!-- Mobile menu button --> */}
-                        <div className="flex md:hidden">
-                            <button type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
-                                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-                                    <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
-                                </svg>
+                        <div className="flex md:hidden" >
+                            <button type="button" onClick={() => setMobileMenu((prevStateMenu) => !prevStateMenu)}
+                                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                                {!mobileMenu ? (<MenuIcon />) : (<CloseIcon />)}
                             </button>
                         </div>
                     </div>
 
                     {/* <!-- Mobile Menu open: "block", Menu closed: "hidden" --> */}
-                    <div className="md:flex md:items-center md:justify-between">
-                        <div className="flex flex-col -mx-4 md:flex-row md:items-center md:mx-8">
-                            {links.map((item)=>{
-                                return <a href={item.path} className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">{item.text}</a>
-                            })}
-                            
+                    <Collapse in={mobileMenu}>
+                        <div className={`md:flex md:items-center md:justify-between ${showItems}`}>
+                            <div className="flex flex-col -mx-4 md:flex-row md:items-center md:mx-8">
+                                {links.map((item) => {
+                                    return <a href={item.path} key={`${item.path}_homenavbar`}
+                                        className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">{item.text}</a>
+                                })}
+                            </div>
                         </div>
-
-                        
-                    </div>
+                    </Collapse>
                 </div>
             </div>
         </nav>
