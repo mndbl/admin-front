@@ -1,21 +1,25 @@
-import { IndexEntes } from './settings/entes/IndexEntes'
-import { IndexProductos } from './settings/products/IndexProductos'
-import { IndexServicios } from './settings/servicios/IndexServicios'
-import { IndexCuentas } from './settings/cuentas/IndexCuentas'
-import { IndexEmpresas } from './settings/empresas/IndexEmpresas'
-import { Switch, Route } from 'react-router-dom'
-import { AdminLayout } from '../components/layouts/AdminLayout'
-import { IndexRoles } from './settings/roles/IndexRoles'
-import { IndexProfiles } from './settings/profile/IndexProfiles'
-import { IndexUsers } from './settings/users/IndexUsers'
+import { Switch, Route } from 'react-router-dom';
+import { DashboardLayout } from '../../components/layouts/DashboardLayout'
+
+//pages
+import { IndexEntes } from './entes/IndexEntes'
+import { IndexProductos } from './products/IndexProductos'
+import { IndexServicios } from './servicios/IndexServicios'
+import { IndexCuentas } from './cuentas/IndexCuentas'
+import { IndexEmpresas } from './empresas/IndexEmpresas'
+import { IndexRoles } from './roles/IndexRoles'
+import { IndexProfiles } from './profile/IndexProfiles'
+import { IndexUsers } from './users/IndexUsers'
+
+//icons
+import BusinessIcon from '@mui/icons-material/Business';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import CarRepairIcon from '@mui/icons-material/CarRepair';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import GroupsIcon from '@mui/icons-material/Groups';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
-import BusinessIcon from '@mui/icons-material/Business';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import CarRepairIcon from '@mui/icons-material/CarRepair';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import GroupWorkIcon from '@mui/icons-material/GroupWork';
 
 const itemsOptions =[
     {label: "Users", path:"/settings/users", icon:<PeopleIcon/>},
@@ -28,10 +32,9 @@ const itemsOptions =[
     {label: "Entes", path:"/settings/entes", icon:<GroupWorkIcon/>},
 ]
 
-
-export function Settings() {
+export function SettingsPage() {
     return (
-        <AdminLayout itemsOptions={itemsOptions}>
+        <DashboardLayout items={itemsOptions}>
             <Switch>
                 <Route path="/settings/users" component={IndexUsers}/>
                 <Route path="/settings/roles" component={IndexRoles}/>
@@ -41,8 +44,7 @@ export function Settings() {
                 <Route path="/settings/servicios" component={IndexServicios}/>
                 <Route path="/settings/productos" component={IndexProductos}/>
                 <Route path="/settings/entes" component={IndexEntes}/>
-
             </Switch>
-        </AdminLayout>
+        </DashboardLayout>
     )
 }
