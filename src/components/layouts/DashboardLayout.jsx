@@ -6,6 +6,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,10 +15,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Navbar } from '../../components/partials/Navbar';
-import { Tooltip } from '@mui/material';
-import { useHistory } from 'react-router-dom';
-import {Footer} from '../partials/Footer'
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { Navbar } from '../partials/Navbar';
+import { Footer } from '../partials/Footer';
 
 const drawerWidth = 240;
 
@@ -55,6 +56,7 @@ const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: 'white',
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -86,10 +88,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export function DashboardLayout({ children, items }) {
+export function DashboardLayout() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const history = useHistory()
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -102,10 +103,10 @@ export function DashboardLayout({ children, items }) {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
+            <AppBar position="fixed" open={open} >
+                <Toolbar >
                     <IconButton
-                        color="inherit"
+
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
@@ -116,9 +117,7 @@ export function DashboardLayout({ children, items }) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <div className="w-full">
-                        <Navbar />
-                    </div>
+                    <Navbar />
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -129,29 +128,45 @@ export function DashboardLayout({ children, items }) {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {items.map((item, index) => (
-                        <Tooltip title={item.label} placement="right" key={`ìtem-${index}`}>
-                            <ListItem button onClick={() => history.push(item.path)}>
-                                <ListItemIcon >
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item.label} />
-                            </ListItem>
-                        </Tooltip>
-
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
                     ))}
                 </List>
                 <Divider />
-
+                <List>
+                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1, height: {lg:'85vh'} }}>
+            <div className="flex flex-col" style={{height: '80vh'}}>
                 <DrawerHeader />
-                <div className="w-full rounded-lg h-full lg:flex">
-                    {children}
-                    </div>
-                <Footer/>
-                
-            </Box>
+                <div className="flex-grow min-h-full w-full p-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
+                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
+                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
+                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
+                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
+                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
+                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
+                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
+                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
+                    sapien faucibus et molestie ac.
+                </div>
+                <Footer />
+            </div>
         </Box>
     );
 }
