@@ -6,9 +6,9 @@ import { Navbar } from '../components/partials/Navbar'
 export function HomePage() {
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div className="items-center lg:flex my-2">
+            <div className="items-center lg:flex my-2 flex-grow">
                 <div className="w-full lg:w-1/2">
                     <video src={FinanceApp} autoPlay loop className="mx-auto"></video>
                     <a href="https://storyset.com/business" className="sr-only">Business illustrations by Storyset</a>

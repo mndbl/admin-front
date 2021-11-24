@@ -88,7 +88,11 @@ const defaultClassName = "no-underline text-gray-800 dark:text-gray-300 hover:bg
 
 const unAuthItems = [
     { label: 'Login', to: '/login' },
-    { label: 'Register', to: '/register' }
+    { label: 'Register', to: '/register' },
+    //para pruebas
+    { label: 'Configuración', to: '/settings' },
+    { label: 'Registros', to: '/admin' }
+
 ]
 
 const authItems = [

@@ -1,18 +1,23 @@
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { useForm } from "react-hook-form";
 import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
+import { useSelector, useDispatch } from 'react-redux'
+import { loginUser, userSelector, clearState } from '../../features/Users/UserSlice'
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
+    const history = useHistory()
+    const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
-
-    const onLogin = (data) => {
-        console.log(data);
+    const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
+    const onSubmitLogin=(data)=>{
+        dispatch(loginUser(data))
     }
     return (
         <AuthLayout text="Ingresar" login={true}>
             <form
                 className="space-y-6"
-                onSubmit={handleSubmit(onLogin)}
+                onSubmit={handleSubmit(onSubmitLogin)}
                 method="POST"
             >
                 <div>

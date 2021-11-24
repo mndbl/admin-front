@@ -1,24 +1,24 @@
 import AuthLayout from "../../components/layouts/AuthLayout";
+import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
+import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser, userSelector, clearState } from '../../features/Users/UserSlice'
-import { useForm } from "react-hook-form";
-import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
 import { useHistory } from "react-router-dom";
 
 export default function Register() {
     const history = useHistory()
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
-    const {isFetching, isSuccess, isError,errorMessage}= useSelector(userSelector)
-    const onRegister = (data) => {
+    const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
+    const onSubmitRegister=(data)=>{
         dispatch(registerUser(data))
     }
+
     return (
         <AuthLayout text="Registrarse" >
             <form
+            onSubmit={handleSubmit(onSubmitRegister)}
                 className="space-y-6"
-                onSubmit={handleSubmit(onRegister)}
-                method="POST"
             >
                 <div>
                     <label

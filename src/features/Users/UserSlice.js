@@ -1,24 +1,25 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+const urlBase = "https://reqres.in/api"
 
 export const registerUser = createAsyncThunk(
     'users/register',
     async ({ name, email, password }, thunkAPI) => {
         try {
+            console.log('email ', email);
             const res = await fetch(
-                'https://mock-user-auth-server.herokuapp.com/api/v1/users',
+                `${urlBase}/register`,
                 {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
+                    body: {
                         name, email, password
-                    })
+                    }
                 }
             )
             let data = await response.json()
-            console.log('data ', data);
             if (response.status === 200) {
                 localStorage.setItem('token', data.token)
                 return { ...data, username: name, email: email }
@@ -32,7 +33,7 @@ export const registerUser = createAsyncThunk(
     }
 )
 
-export const login = createAsyncThunk(
+export const loginUser = createAsyncThunk(
     'users/login',
     async ({ email, password }, thunkAPI) => {
         try {
@@ -129,25 +130,26 @@ export const userSlice = createSlice({
         },
 
         [registerUser.rejected]: (state, {payload})=>{
+            console.log('rejected register ',payload);
             state.isFetching = false;
             state.isError = true;
-            state.errorMessage = payload.message;
+            state.errorMessage = payload?.message;
         },
 
-        [login.fulfilled]: (state, { payload }) => {
+        [loginUser.fulfilled]: (state, { payload }) => {
             state.email = payload.email;
             state.username = payload.name;
             state.isFetching = false;
             state.isSuccess = true;
             return state;
           },
-          [login.rejected]: (state, { payload }) => {
+          [loginUser.rejected]: (state, { payload }) => {
             console.log('payload', payload);
             state.isFetching = false;
             state.isError = true;
-            state.errorMessage = payload.message;
+            state.errorMessage = payload?.message;
           },
-          [login.pending]: (state) => {
+          [loginUser.pending]: (state) => {
             state.isFetching = true;
           },
           [fetchUserBytoken.pending]: (state) => {

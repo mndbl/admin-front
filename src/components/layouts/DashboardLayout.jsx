@@ -88,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-export function DashboardLayout() {
+export function DashboardLayout({ children }) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -149,21 +149,10 @@ export function DashboardLayout() {
                     ))}
                 </List>
             </Drawer>
-            <div className="flex flex-col" style={{height: '80vh'}}>
+            <div className="flex flex-col min-h-full w-full" style={{ height: '80vh' }}>
                 <DrawerHeader />
                 <div className="flex-grow min-h-full w-full p-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
+                    {children}
                 </div>
                 <Footer />
             </div>
