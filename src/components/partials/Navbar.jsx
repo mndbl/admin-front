@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProfileSection } from "./ProfileSection";
-import { useWindowDimensions } from '../../hooks/useWindowsDimensions'
+import { useWindowDimensions } from '../../helpers/useWindowsDimensions'
 
 export function Navbar() {
     const [menu, setMenu] = useState(false)

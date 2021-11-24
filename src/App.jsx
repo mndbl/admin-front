@@ -1,8 +1,7 @@
 import { Switch, Route } from 'react-router-dom'
 import { DashboardLayout } from './components/layouts/DashboardLayout'
-import { Footer } from './components/partials/Footer'
-import { Navbar } from './components/partials/Navbar'
-import { Sidebar } from './components/partials/Sidebar'
+import Login from './pages/auth/Login'
+import Register from './pages/auth/Register'
 import { HomePage } from './pages/HomePage'
 
 export function App() {
@@ -10,11 +9,13 @@ export function App() {
     <>
       
       <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/dashboard" component={DashboardLayout} />
-        <Route path="/sidebar" component={Sidebar} />
         <Route path="/" component={HomePage} />
       </Switch>
       
     </>
   )
 }
+

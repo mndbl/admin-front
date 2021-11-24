@@ -3,9 +3,12 @@ import { render } from 'react-dom';
 import { App } from './App';
 import './index.css';
 import './app.css';
-
+import store from './app/store'
+import { Provider } from 'react-redux';
 render(
-    <Router>
-        <App />
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>
     , document.getElementById('root'));
