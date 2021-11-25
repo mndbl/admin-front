@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-const urlBase = "https://reqres.in/api"
+import axios from 'axios'
+const urlBase = "http://127.0.0.1:8000/api"
 
 export const registerUser = createAsyncThunk(
     'users/register',
     async ({ name, email, password }, thunkAPI) => {
+
         try {
             console.log('email ', email);
-            const res = await fetch(
+            const response = await fetch(
                 `${urlBase}/register`,
                 {
                     method: 'POST',
@@ -14,12 +16,19 @@ export const registerUser = createAsyncThunk(
                         Accept: 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: {
-                        name, email, password
-                    }
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        password_confirmation: password
+                    }),
                 }
             )
             let data = await response.json()
+
+            if (response.status === 500) {
+                return thunkAPI.rejectWithValue('Internal Server Error')
+            }
             if (response.status === 200) {
                 localStorage.setItem('token', data.token)
                 return { ...data, username: name, email: email }
@@ -38,7 +47,7 @@ export const loginUser = createAsyncThunk(
     async ({ email, password }, thunkAPI) => {
         try {
             const response = await fetch(
-                'https://mock-user-auth-server.herokuapp.com/api/v1/auth',
+                `${urlBase}/login`,
                 {
                     method: 'POST',
                     headers: {
@@ -53,6 +62,9 @@ export const loginUser = createAsyncThunk(
             );
             let data = await response.json();
             console.log('response', data);
+            if (response.status === 500) {
+                return thunkAPI.rejectWithValue('Internal Server Error')
+            }
             if (response.status === 200) {
                 localStorage.setItem('token', data.token);
                 return data;
@@ -83,7 +95,9 @@ export const fetchUserBytoken = createAsyncThunk(
             );
             let data = await response.json();
             console.log('data', data, response.status);
-
+            if (response.status === 500) {
+                return thunkAPI.rejectWithValue('Internal Server Error')
+            }
             if (response.status === 200) {
                 return { ...data };
             } else {
@@ -108,7 +122,7 @@ export const userSlice = createSlice({
         errorMessage: ''
     },
     reducers: {
-        clearState:(state)=>{
+        clearState: (state) => {
             state.isError = false;
             state.isSuccess = false;
             state.isFetching = false;
@@ -117,58 +131,59 @@ export const userSlice = createSlice({
         }
     },
     extraReducers: {
-        [registerUser.fulfilled]: (state, {payload})=>{
+        [registerUser.fulfilled]: (state, { payload }) => {
             console.log('payload register ', payload);
             state.isFetching = false;
             state.isSuccess = true;
-            state.email = payload.user.email
-            state.username = payload.user.name
+            state.email = payload.data.email
+            state.username = payload.data.name
         },
 
-        [registerUser.pending]: (state)=>{
+        [registerUser.pending]: (state) => {
             state.isFetching = true
         },
 
-        [registerUser.rejected]: (state, {payload})=>{
-            console.log('rejected register ',payload);
+        [registerUser.rejected]: (state, { payload }) => {
+            console.log('rejected register ', payload);
             state.isFetching = false;
             state.isError = true;
             state.errorMessage = payload?.message;
         },
 
         [loginUser.fulfilled]: (state, { payload }) => {
+            console.log('login fulfilees ', payload);
             state.email = payload.email;
             state.username = payload.name;
             state.isFetching = false;
             state.isSuccess = true;
             return state;
-          },
-          [loginUser.rejected]: (state, { payload }) => {
+        },
+        [loginUser.rejected]: (state, { payload }) => {
             console.log('payload', payload);
             state.isFetching = false;
             state.isError = true;
             state.errorMessage = payload?.message;
-          },
-          [loginUser.pending]: (state) => {
+        },
+        [loginUser.pending]: (state) => {
             state.isFetching = true;
-          },
-          [fetchUserBytoken.pending]: (state) => {
+        },
+        [fetchUserBytoken.pending]: (state) => {
             state.isFetching = true;
-          },
-          [fetchUserBytoken.fulfilled]: (state, { payload }) => {
+        },
+        [fetchUserBytoken.fulfilled]: (state, { payload }) => {
             state.isFetching = false;
             state.isSuccess = true;
-      
+
             state.email = payload.email;
             state.username = payload.name;
-          },
-          [fetchUserBytoken.rejected]: (state) => {
+        },
+        [fetchUserBytoken.rejected]: (state) => {
             console.log('fetchUserBytoken');
             state.isFetching = false;
             state.isError = true;
-          },
+        },
     }
 })
 
-export const {clearState} = userSlice.actions;
+export const { clearState } = userSlice.actions;
 export const userSelector = state => state.user
