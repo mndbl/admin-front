@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-const urlBase = "http://127.0.0.1:8000/api"
+const urlBase = "http://admin-api.test/api"
 
 export const registerUser = createAsyncThunk(
     'users/register',

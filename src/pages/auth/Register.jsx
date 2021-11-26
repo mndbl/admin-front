@@ -1,23 +1,50 @@
-import AuthLayout from "../../components/layouts/AuthLayout";
-import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser, userSelector, clearState } from '../../features/Users/UserSlice'
-import { useHistory } from "react-router-dom";
+import toast from 'react-hot-toast'
+import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
+import AuthLayout from "../../components/layouts/AuthLayout";
+import { Snackbar, Alert } from "@mui/material";
 
 export default function Register() {
+    const [openError, setOpenError] = useState(false);
     const history = useHistory()
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
-    const onSubmitRegister=(data)=>{
+    const onSubmitRegister = (data) => {
         dispatch(registerUser(data))
     }
 
+    useEffect(() => {
+        dispatch(clearState());
+    }, [])
+
+    useEffect(() => {
+        if (isError) {
+            setOpenError(prev => prev = true)
+            dispatch(clearState())
+        }
+        if (isSuccess) history.push('/admin')
+    }, [isSuccess, isError])
+
+    const handleClose = () => {
+        setOpenError(false)
+    }
     return (
         <AuthLayout text="Registrarse" >
+            
+            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: "center" }}
+                open={openError} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                    {errorMessage}
+                </Alert>
+            </Snackbar>
+            
             <form
-            onSubmit={handleSubmit(onSubmitRegister)}
+                onSubmit={handleSubmit(onSubmitRegister)}
                 className="space-y-6"
             >
                 <div>
@@ -86,29 +113,30 @@ export default function Register() {
                         type="submit"
                         className={buttonAuthClass}
                     >
-                        {/* {isFetching ? (
+                        {isFetching ? (
                             <svg
-                                class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                className="mx-auto animate-spin h-5 w-5 text-white"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                             >
                                 <circle
-                                    class="opacity-25"
+                                    className="opacity-25"
                                     cx="12"
                                     cy="12"
                                     r="10"
                                     stroke="currentColor"
-                                    stroke-width="4"
+                                    strokeWidth="4"
                                 ></circle>
                                 <path
-                                    class="opacity-75"
+                                    className="opacity-75"
                                     fill="currentColor"
                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                                 ></path>
                             </svg>
-                        ) : null} */}
-                        Register
+                        ) : <p>Register</p>
+                        }
+
                     </button>
                 </div>
             </form>
