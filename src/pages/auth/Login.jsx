@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser, userSelector, clearState } from '../../features/Users/UserSlice'
 import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
-import { SnackBar } from "../../components/partials/SnackBar";
+
 import AuthLayout from "../../components/layouts/AuthLayout";
+import { SnackBar } from "../../components/partials/SnackBar";
 
 export default function Login() {
 
@@ -13,6 +15,7 @@ export default function Login() {
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
     const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector)
+
     const onSubmitLogin = (data) => {
         dispatch(loginUser(data))
     }

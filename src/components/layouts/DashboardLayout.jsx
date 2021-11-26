@@ -101,7 +101,7 @@ export function DashboardLayout({ children }) {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', heigth: '100vh' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open} >
                 <Toolbar >
@@ -149,7 +149,7 @@ export function DashboardLayout({ children }) {
                     ))}
                 </List>
             </Drawer>
-            <div className="flex flex-col min-h-full w-full" style={{ height: '80vh' }}>
+            <div className="flex flex-col min-h-full w-full" style={{height: '80vh'}}>
                 <DrawerHeader />
                 <div className="flex-grow min-h-full w-full p-3">
                     {children}

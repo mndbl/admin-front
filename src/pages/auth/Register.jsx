@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
 import { useSelector, useDispatch } from 'react-redux'
 import { registerUser, userSelector, clearState } from '../../features/Users/UserSlice'
-import toast from 'react-hot-toast'
+
 import { labelFormClass, inputsFormClass, buttonAuthClass } from '../../assets/styles/tailwindClass'
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { Snackbar, Alert } from "@mui/material";
@@ -35,14 +36,13 @@ export default function Register() {
     }
     return (
         <AuthLayout text="Registrarse" >
-            
+
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: "center" }}
                 open={openError} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                     {errorMessage}
                 </Alert>
             </Snackbar>
-            
             <form
                 onSubmit={handleSubmit(onSubmitRegister)}
                 className="space-y-6"
