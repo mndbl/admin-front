@@ -151,7 +151,7 @@ export function DashboardLayout({ children }) {
             </Drawer>
             <div className="flex flex-col min-h-full w-full" style={{height: '80vh'}}>
                 <DrawerHeader />
-                <div className="flex-grow min-h-full w-full p-3">
+                <div className="flex-grow min-h-full w-11/12 p-3 mx-auto">
                     {children}
                 </div>
                 <Footer />

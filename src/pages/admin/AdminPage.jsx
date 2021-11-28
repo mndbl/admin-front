@@ -2,15 +2,18 @@ import { Switch, NavLink, Route, Redirect } from "react-router-dom";
 import { DashboardLayout } from "../../components/layouts/DashboardLayout";
 import { activePrimaryMenu, defaultPrimaryMenu } from "../../assets/styles/tailwindClass";
 import { RegistrosDiariosPage } from "./registros-diarios/RegistrosDiariosPage";
+import { SectionPrimaryMenu } from "../../components/partials/SectionPrimaryMenu";
+
+const items=[
+    {to: '/registros-diarios', text: 'Registros Diarios'},
+    {to: '/ordenes-servicio', text: 'Ordenes de Servicio'},
+    {to: '/consultas', text: 'Consultas'},
+]
 
 export function AdminPage() {
     return (
         <DashboardLayout>
-            <div className="w-full flex justify-between divide-x-2 divice-blue-100 text-center shadow-xl">
-                <NavLink className={isActive => isActive ? (activePrimaryMenu) : (defaultPrimaryMenu)} to="#!">Registros Diarios</NavLink>
-                <NavLink className={isActive => isActive ? (activePrimaryMenu) : (defaultPrimaryMenu)} to="#!">Ordenes</NavLink>
-                <NavLink className={isActive => isActive ? (activePrimaryMenu) : (defaultPrimaryMenu)} to="#!">Consultas</NavLink>
-            </div>
+           <SectionPrimaryMenu items={items}/>
 
             <Switch>
                 <Route path="/admin/registros-diarios" component={RegistrosDiariosPage}/>
