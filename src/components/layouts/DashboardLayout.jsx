@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -89,6 +89,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export function DashboardLayout({ children }) {
+    const contentRef = useRef()
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -99,6 +100,10 @@ export function DashboardLayout({ children }) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+    useEffect(() => {
+        contentRef.current.style.heigth = 500 + 'vh'
+        console.log(contentRef.current);
+    }, []);
 
     return (
         <Box sx={{ display: 'flex', heigth: '100vh' }}>
@@ -149,12 +154,15 @@ export function DashboardLayout({ children }) {
                     ))}
                 </List>
             </Drawer>
-            <div className="flex flex-col min-h-full w-full" style={{height: '80vh'}}>
+            <div className="flex flex-col min-h-full w-full">
                 <DrawerHeader />
-                <div className="flex-grow min-h-full w-11/12 p-3 mx-auto">
+                <div className="flex-grow w-11/12 p-3 mx-auto " ref={contentRef}>
                     {children}
                 </div>
-                <Footer />
+                <div>
+
+                    <Footer />
+                </div>
             </div>
         </Box>
     );
