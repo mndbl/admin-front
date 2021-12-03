@@ -14,7 +14,7 @@ export function Empresaspage() {
     return (
         <>
             <SectionSecondaryMenu items={items} />
-            <div className="w-full px-2 flex flex-col min-h-full">
+            <div className="w-full px-2 min-h-full">
                 <Switch>
                     <Route path={`${url}/profile`} component={ProfileCompany}/>
                     <Redirect from="/admin/registros-diarios" to={`${url}/profile`} />

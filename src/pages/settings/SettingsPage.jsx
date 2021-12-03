@@ -12,17 +12,15 @@ const items = [
 
 
 export function SettingsPage() {
-    const {url} = useRouteMatch()
+    const { url } = useRouteMatch()
     return (
         <DashboardLayout>
             <SectionPrimaryMenu items={items} />
-
-            <Switch>
-                <Route path={`${url}/empresas`} component={Empresaspage}/>
-    
-
-            </Switch>
-                
+            <div className="min-h-full">
+                <Switch>
+                    <Route path={`${url}/empresas`} component={Empresaspage} />
+                </Switch>
+            </div>
         </DashboardLayout>
     )
 }
