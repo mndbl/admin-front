@@ -4,17 +4,17 @@ import { SectionSecondaryMenu } from '../../../components/partials/SectionSecond
 import { ProfileCompany } from './profile/ProfileCompany';
 
 const items = [
-    { to: '/profile', text: 'Perfil de Empresa' },
     { to: '/usuarios', text: 'Administrar Usuarios' },
+    { to: '/profile', text: 'Perfil de Empresa' },
     { to: '/cuentas', text: 'Cuentas' },
 ]
 
-export function Empresaspage() {
+export function EmpresasPage() {
     const { url } = useRouteMatch()
     return (
         <>
             <SectionSecondaryMenu items={items} />
-            <div className="w-full px-2 min-h-full">
+            <div className="w-full px-2 lg:min-h-full">
                 <Switch>
                     <Route path={`${url}/profile`} component={ProfileCompany}/>
                     <Redirect from="/admin/registros-diarios" to={`${url}/profile`} />

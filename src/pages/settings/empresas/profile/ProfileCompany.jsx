@@ -1,4 +1,5 @@
-import {Button} from '@mui/material'
+import { useState } from 'react'
+import { Button } from '@mui/material'
 
 
 
@@ -6,11 +7,14 @@ export function ProfileCompany() {
 
     const [empresa, setEmpresa] = useState({})
 
-    
+
 
     return (
-        <section className="w-full min-h-full" style={{ height: '100%' }}>
-            <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center">
+        <section className="w-full min-h-full">
+            <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-full lg:py-4 lg:flex-row lg:items-center">
+                <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
+                    <img className="object-cover w-full h-full max-w-2xl rounded-md" src="https://images.unsplash.com/photo-1555181126-cf46a03827c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="glasses photo" />
+                </div>
                 <div className="w-full lg:w-1/2">
                     <div class="px-6 py-4">
                         <h1 class="text-xl font-semibold text-gray-800 dark:text-white">Nombre de Empresa</h1>
@@ -44,9 +48,7 @@ export function ProfileCompany() {
                     <Button variant="contained" color='primary'>ACTUALIZAR</Button>
                 </div>
 
-                <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
-                    <img className="object-cover w-full h-full max-w-2xl rounded-md" src="https://images.unsplash.com/photo-1555181126-cf46a03827c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="glasses photo" />
-                </div>
+
             </div>
         </section>
     )
